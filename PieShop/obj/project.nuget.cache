@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MV7LvLsXfz6mpk8VHsB5S1wWfT1Mu9nVX24SN80rGdKjNpHs0CZUFxOCaLuqtcK/JU5rrGxgtp2kraZK/lf2/A==",
+  "dgSpecHash": "SRU7PlM3C+OUHXPDxa5A1DSv4pSAyFEra8vE4t0tLMtOH1wfCngXWua/9cVntJFPOwHN5OHcnY5NkX7yDfs/GA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hrvoje.sesar\\source\\repos\\PieShop\\PieShop\\PieShop.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\hrvoje.sesar\\Desktop\\PieShop\\PieShop\\PieShop.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hrvoje.sesar\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

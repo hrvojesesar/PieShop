@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hrvoje.sesar\\source\\repos\\PieShop\\PieShop\\PieShop.csproj": {}
+    "C:\\Users\\hrvoje.sesar\\Desktop\\PieShop\\PieShop\\PieShop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hrvoje.sesar\\source\\repos\\PieShop\\PieShop\\PieShop.csproj": {
+    "C:\\Users\\hrvoje.sesar\\Desktop\\PieShop\\PieShop\\PieShop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hrvoje.sesar\\source\\repos\\PieShop\\PieShop\\PieShop.csproj",
+        "projectUniqueName": "C:\\Users\\hrvoje.sesar\\Desktop\\PieShop\\PieShop\\PieShop.csproj",
         "projectName": "PieShop",
-        "projectPath": "C:\\Users\\hrvoje.sesar\\source\\repos\\PieShop\\PieShop\\PieShop.csproj",
+        "projectPath": "C:\\Users\\hrvoje.sesar\\Desktop\\PieShop\\PieShop\\PieShop.csproj",
         "packagesPath": "C:\\Users\\hrvoje.sesar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hrvoje.sesar\\source\\repos\\PieShop\\PieShop\\obj\\",
+        "outputPath": "C:\\Users\\hrvoje.sesar\\Desktop\\PieShop\\PieShop\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hrvoje.sesar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

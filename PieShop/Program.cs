@@ -1,7 +1,5 @@
-﻿
-
-
-using PieShop;
+﻿using PieShop.Accounting;
+using PieShop.HR;
 using System.Text;
 
 
@@ -16,43 +14,103 @@ Console.WriteLine("Creating an employee");
 Console.WriteLine("--------------------\n");
 
 
-Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25); //čim pozovem new, konstruktor se pozove
+Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25, EmployeeType.Manager); //čim pozovem new, konstruktor se pozove
 
-string name = "bethany";
-string anotherName  =name;
-name+=" smith";
-Console.WriteLine($"Value of name: {name} and value of copy of name: {anotherName}");
+Employee george = new("George","Jones","george@snowball.be", new DateTime(1980, 2, 17), null, EmployeeType.Research);
 
+//Employee mysteryEmployee = null;
+//mysteryEmployee.DisplayEmployeeDetails();
 
-string upperCaseName= name.ToUpper();
+#region First run Bethany
 
-Console.WriteLine("Name: " + name);
-Console.WriteLine("Upper case name: "  +upperCaseName);
+bethany.PerformWork();
+bethany.PerformWork(5);
+bethany.PerformWork();
+bethany.ReceiveWage();
+bethany.DisplayEmployeeDetails();
 
-
-string firstName  ="Bethany";
-string lastName  ="Smith";
-
-
-StringBuilder builder = new StringBuilder();
-
-builder.Append("Last name: ");
-builder.AppendLine(lastName);
-builder.Append("First name: ");
-builder.AppendLine(firstName);
-string result = builder.ToString();
-Console.WriteLine(result);
+#endregion 
 
 
-StringBuilder builder2=new StringBuilder();
+#region First run George
 
-for (int i=0; i<2500; i++)
-{
-    builder2.Append(i);
-    builder2.Append(" ");
-}
-string list=builder2.ToString();
-Console.WriteLine(list);
+george.PerformWork(10);
+george.PerformWork();
+george.PerformWork();
+george.ReceiveWage();
+george.DisplayEmployeeDetails();
+
+#endregion
+
+Employee.taxRate = 0.02;
+
+#region Second run Bethany
+    
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.ReceiveWage();
+bethany.DisplayEmployeeDetails();
+
+#endregion
+
+
+#region Second run George
+
+george.PerformWork();
+george.PerformWork();
+george.PerformWork();
+george.ReceiveWage();
+george.DisplayEmployeeDetails();
+
+#endregion
+
+Employee.DisplayTaxRate();
+
+
+//string bethanyAsJson = bethany.ConvertToJson();
+//Console.WriteLine(bethanyAsJson);
+
+
+
+//string name = "bethany";
+//string anotherName  =name;
+//name+=" smith";
+//Console.WriteLine($"Value of name: {name} and value of copy of name: {anotherName}");
+
+
+//string upperCaseName= name.ToUpper();
+
+//Console.WriteLine("Name: " + name);
+//Console.WriteLine("Upper case name: "  +upperCaseName);
+
+
+//string firstName  ="Bethany";
+//string lastName  ="Smith";
+
+
+//StringBuilder builder = new StringBuilder();
+
+//builder.Append("Last name: ");
+//builder.AppendLine(lastName);
+//builder.Append("First name: ");
+//builder.AppendLine(firstName);
+//string result = builder.ToString();
+//Console.WriteLine(result);
+
+
+//StringBuilder builder2=new StringBuilder();
+
+//for (int i=0; i<2500; i++)
+//{
+//    builder2.Append(i);
+//    builder2.Append(" ");
+//}
+//string list=builder2.ToString();
+//Console.WriteLine(list);
 
 
 //bethany.PerformWork(25);
@@ -80,7 +138,7 @@ Console.WriteLine(list);
 //bethany.PerformWork(5);
 //bethany.PerformWork();
 
-//bethany.firstName= "John";
+//bethany.firstName = "John";
 //bethany.hourlyRate = 10;
 
 //bethany.DisplayEmployeeDetails();
@@ -95,6 +153,15 @@ Console.WriteLine(list);
 //double receivedWageBethany = bethany.ReceiveWage(true);
 //Console.WriteLine($"Wage paid (message from Program): {receivedWageBethany}");
 
+
+//StructTask task;
+//task.description = "Create a new pie";
+//task.hours = 2;
+
+//task.PerformTaskWork();
+
+
+//Customer customer = new();
 
 //Console.WriteLine("Creating an employee");
 //Console.WriteLine("--------------------\n");
