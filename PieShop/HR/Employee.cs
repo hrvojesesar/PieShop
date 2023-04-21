@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,40 +9,108 @@ using System.Threading.Tasks;
 
 namespace PieShop.HR
 {
-    internal class Employee
+    internal class Employee: IEmployee
     {
-        public string firstName;
-        public string lastName;
-        public string email;
+        private string firstName;
+        private string lastName;
+        private string email;
 
-        public int numberOfHoursWorked;
-        public double wage;
-        public double? hourlyRate;
+        private int numberOfHoursWorked;
+        private double wage;
+        private double? hourlyRate;
 
-        public DateTime birthDay;
+        private DateTime birthDay;
 
         public static double taxRate = 0.15;
 
-        const int minimalHoursWorkedUnit = 1;
+        private const int minimalHoursWorkedUnit = 1;
 
-        public EmployeeType employeeType;
-        public Employee(string first, string last, string em, DateTime bd) : this(first, last, em, bd, 0, EmployeeType.StoreManager)
+        private Address address;
+
+        public string FirstName
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
+
+        public string LastName
+        {
+            get { return lastName; }
+            set { lastName = value; }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        public int NumberOfHoursWorked
+        {
+            get { return numberOfHoursWorked; }
+           protected set { numberOfHoursWorked = value; }
+        }
+
+
+        public double Wage
+        {
+            get { return wage; }
+            private set { wage = value; }
+        }
+
+
+        public double? HourlyRate
+        {
+            get { return hourlyRate; }
+            set { 
+                    if (hourlyRate<0)
+                {
+                    hourlyRate = 0;
+                }
+                    else
+                {
+                    hourlyRate = value;
+                }
+            }
+        }
+
+        public DateTime BirthDay
+        {
+            get { return birthDay; }
+            set { birthDay = value; }
+        }
+        
+        public Address Address
+        {
+            get { return address; }
+            set { address = value; }
+        }
+       
+        public Employee(string firstName, string lastName, string email, DateTime birthDay) : this( firstName,  lastName,  email,  birthDay, 0)
         {
         }
 
-        public Employee(string first, string last, string em, DateTime bd, double? rate, EmployeeType empType)
+        public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate)
         {
-            firstName = first;
-            lastName = last;
-            email = em;
-            birthDay = bd;
-            hourlyRate = rate;
-            employeeType = empType;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            BirthDay = birthDay;
+            HourlyRate = hourlyRate ?? 10;
+  
         }
 
+        public Employee(string firstName, string lastName, string email, DateTime birthDay,
+            double? hourlyRate, string street, string houseNumber, string zip, string city)
+        {
+            FirstName= firstName;
+            LastName = lastName;
+            Email = email;
+            BirthDay = birthDay;
+            HourlyRate = hourlyRate ?? 10;
 
-
-
+            Address=new Address(street, houseNumber, zip, city);
+        }
         public void PerformWork()
         {
             //numberOfHoursWorked++;
@@ -51,41 +120,27 @@ namespace PieShop.HR
 
         public void PerformWork(int numberOfHours)
         {
-            numberOfHoursWorked += numberOfHours;
-            Console.WriteLine($"{firstName} {lastName} has worked to {numberOfHours} hours!");
+            NumberOfHoursWorked += numberOfHours;
+            Console.WriteLine($"{FirstName} {LastName} has worked to {numberOfHours} hours!");
         }
 
         public double ReceiveWage(bool resetHours = true)
         {
-            double wageBeforeTax = 0.0;
+            double wageBeforeTax = NumberOfHoursWorked * HourlyRate.Value;
 
-           
-
-
-            if (employeeType == EmployeeType.Manager)
-            {
-                Console.WriteLine($"An extra was added to the wage since: {firstName} is a manager");
-                wageBeforeTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
-
-            }
-            else
-            {
-
-                wageBeforeTax = numberOfHoursWorked * hourlyRate.Value;
-            }
 
             double taxAmount = wageBeforeTax * taxRate;
 
             wage = wageBeforeTax - taxAmount;
 
 
-            Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
+            Console.WriteLine($"{FirstName} {LastName} has received a wage of {Wage} for {NumberOfHoursWorked} hour(s) of work.");
 
             if (resetHours)
             {
-                numberOfHoursWorked = 0;
+                NumberOfHoursWorked = 0;
             }
-            return wage;
+            return Wage;
         }
 
         public static void DisplayTaxRate()
@@ -101,7 +156,7 @@ namespace PieShop.HR
 
         public int CalculateBonus(int bonus)
         {
-            if (numberOfHoursWorked > 10)
+            if (NumberOfHoursWorked > 10)
             {
                 bonus *= 2;
             }
@@ -113,7 +168,7 @@ namespace PieShop.HR
         public int CalculateBonusAndBonusTax(int bonus, out int bonusTax)
         {
             bonusTax = 0;
-            if (numberOfHoursWorked > 10)
+            if (NumberOfHoursWorked > 10)
             {
                 bonus *= 2;
             }
@@ -144,6 +199,21 @@ namespace PieShop.HR
         }
 
 
+        public virtual void GiveBonus()
+        {
+            Console.WriteLine($"{FirstName} {LastName} received a generic bonus of 100!"); 
+        }
 
+
+    
+        public void GiveCommplient()
+        {
+            Console.WriteLine($"You've done a great job, {FirstName}");
+        }
+
+        public double RecieveWage(bool resetHours = true)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

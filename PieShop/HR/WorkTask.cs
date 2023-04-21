@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PieShop.HR
 {
-    internal struct StructTask
+    internal struct WorkTask
     {
         public string description;
         public int hours;
