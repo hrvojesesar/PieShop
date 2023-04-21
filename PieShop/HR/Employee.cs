@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PieShop.HR
 {
-    internal class Employee: IEmployee
+    public class Employee: IEmployee
     {
         private string firstName;
         private string lastName;
@@ -121,6 +121,7 @@ namespace PieShop.HR
         public void PerformWork(int numberOfHours)
         {
             NumberOfHoursWorked += numberOfHours;
+            NumberOfHoursWorked++;
             Console.WriteLine($"{FirstName} {LastName} has worked to {numberOfHours} hours!");
         }
 
