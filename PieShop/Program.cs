@@ -1,23 +1,83 @@
-﻿using PieShop.Accounting;
+﻿using Newtonsoft.Json.Serialization;
+using PieShop;
+using PieShop.Accounting;
 using PieShop.HR;
 using System.Text;
 
 
+List <Employee> employees = new List <Employee> ();
+
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine("*************************");
+Console.WriteLine("Bethany's Pie Shop Employee App");
+Console.WriteLine("*************************");
+Console.ForegroundColor = ConsoleColor.White;
+
+string userSelection;
+Console.ForegroundColor= ConsoleColor.Blue;
+
+Utilities.CheckForExistingEmployeeFile();
+
+do
+{
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine($"Loaded {employees.Count} employee(s)\n\n");
+
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("************************");
+    Console.WriteLine("Select an action");
+    Console.WriteLine("************************");
+
+    Console.WriteLine("1: Register employee");
+    Console.WriteLine("2: View all employees");
+    Console.WriteLine("3: Save data");
+    Console.WriteLine("4: Load data");
+    Console.WriteLine("9: Quit application");
+    Console.WriteLine("Your selection: ");
+
+
+    userSelection = Console.ReadLine();
+
+    switch (userSelection)
+    {
+        case "1":
+            Utilities.RegisterEmployee(employees);
+            break;
+        case "2":
+            Utilities.ViewAllEmployees(employees);
+            break;
+        case "3":
+            Utilities.SaveEmployees(employees);
+            break;
+        case "4":
+            Utilities.LoadEmployees(employees);
+            break;
+        case "9": break;
+        default:
+            Console.WriteLine("Invalid selection. Please try again!");
+            break;
+
+    }
+} while (userSelection != "9");
+
+
+Console.WriteLine("Thanks for using the application");
 
 
 
-IEmployee bethany = new StoreManager("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979,1,16),25);
+
+//IEmployee bethany = new StoreManager("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979,1,16),25);
 
 
-Console.WriteLine("How many hours do we need to register for Bethany?");
-int numberOfHours = 0;
-string input = Console.ReadLine();  
-numberOfHours=int.Parse(input);
+//Console.WriteLine("How many hours do we need to register for Bethany?");
+//int numberOfHours = 0;
+//string input = Console.ReadLine();  
+//numberOfHours=int.Parse(input);
 
 
-bethany.DisplayEmployeeDetails();
-bethany.PerformWork();
-bethany.PerformWork(numberOfHours);
+//bethany.DisplayEmployeeDetails();
+//bethany.PerformWork();
+//bethany.PerformWork(numberOfHours);
 
 
 

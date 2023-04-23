@@ -8,7 +8,7 @@ namespace PieShop.HR
 {
     internal class Manager : Employee
     {
-        public Manager(string firstName, string lastName, string email, DateTime birthDay) : base(firstName, lastName, email, birthDay)
+        public Manager(string firstName, string lastName, string email, DateTime birthDay, double rate) : base(firstName, lastName, email, birthDay)
         {
 
 

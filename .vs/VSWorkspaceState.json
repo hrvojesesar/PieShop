@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\PieShop",
+    "\\PieShop.tests",
     "\\PieShop\\HR"
   ],
-  "SelectedNode": "\\PieShop\\HR\\Employee.cs",
   "PreviewInSolutionExplorer": false
 }
